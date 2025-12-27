@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: mistral7b‑test
+    env: docker
+    plan: free
+    image: ghcr.io/oobabooga/text-generation-webui:latest
+    ports:
+      - 7860
+    envVars:
+      - name: CLI_ARGS
+        value: "--model dolphin‑2.1‑mistral‑7b --chat --listen --api"
+    dockerCommand: >
+      /bin/bash -c "python server.py --listen --api --chat"
